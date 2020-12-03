@@ -11,5 +11,6 @@ const express = require('express');
 const router = express.Router();
 
 router.use('/users', require('./users'));
+router.use('/subdocuments', require('./subdocuments'));
 
 module.exports = router;

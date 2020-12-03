@@ -7,7 +7,7 @@
  *
  */
 
- const Joi         = require('joi');
+const Joi         = require('joi');
 const passport    = require('passport');
 const router      = require('express').Router();
 const auth        = require('../auth');
@@ -26,7 +26,7 @@ const userSchema = Joi.object().keys({
 router.post('/login', auth.optional, (req, res, next) => {
 	const { body: { user } } = req;
 	const result = Joi.validate(user, userSchema);
-    
+
 	if(result.error){
 		return res.status(422).json({
 			errors: result.error
@@ -49,7 +49,7 @@ router.post('/login', auth.optional, (req, res, next) => {
 
 			return res.json({ user });
 		}
-        
+
 		return res.status(400).send(info);
 	})(req, res, next);
 });

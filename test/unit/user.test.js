@@ -23,10 +23,10 @@ suite('[test][User]', () => {
 		//make sure the models are synced, or do any other global init it may be required
 		// return models.sequelize.sync();
 	});
-    
+
 	beforeEach(function () {
 		//get the models
-		
+
 	});
 
 	after(function () {

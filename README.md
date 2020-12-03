@@ -1,97 +1,115 @@
+# Subdocument Array Mutation
 
-# [Nodejs Starter](https://appseed.us/boilerplate-code/nodejs-starter)
+> Subdocument Array Mutation Exercise
 
-Express / [Nodejs Starter](https://appseed.us/boilerplate-code/nodejs-starter) with [JWT authentication](https://jwt.io/introduction/), [SQLite](https://www.sqlite.org/index.html) database, [Sequelize](http://docs.sequelizejs.com/) ORM, unit tests and basic tooling - Provided by **AppSeed** [Web App Generator](https://appseed.us/app-generator).
+## ❗️ Requirements
 
-<br />
+- Node >= 12.19.0
+- yarn >= 1.22.10
 
-![Open-Source Nodejs Starter - Product cover image.](https://github.com/app-generator/static/blob/master/products/boilerplate-code-nodejs-starter-cover.jpg?raw=true) 
+## ⬇️ Version
 
-<br />
+1.0.0
 
-## Requirements
-- [Node.js](https://nodejs.org/) >= 6.x
+## 🛠 Installation
 
-<br />
+Download zip file and extract it [subdocument-array-mutation](https://github.com/reysmerwvr/subdocument-array-mutation). Or clone the repository and cd into it.
 
-## Authentication
-Authentication is based on [json web tokens](https://jwt.io). `passport-jwt` strategy is used to handle the email / password authentication.
-After a successful login the generated token is sent to the requester. 
+subdocument-array-mutation uses a number of open source projects to work properly:
 
-<br />
+- [Node]
+- [nodejs-starter]
+
+Install the dependencies and start the server.
+
+```sh
+cd subdocument-array-mutation
+yarn install
+```
+
+## 🚀 Running it with YARN
+
+```sh
+yarn start
+```
 
 ## API
-### Login: `api/users/login`
-```
-POST api/users/login
+
+### Mutations: `api/subdocuments/mutations`
+
+```json
+POST api/subdocuments/mutations
 Host: localhost:3000
 Content-Type: application/json
 
+body:
 {
-    "email": "demo@appseed.us",
-    "password": "demo"
+    "document": {
+        "_id": 1,
+        "name": "Johnny Content Creator",
+        "posts": [
+            {
+                "_id": 2,
+                "value": "one",
+                "mentions": []
+            },
+            {
+                "_id": 3,
+                "value": "two",
+                "mentions": [
+                    {
+                        "_id": 5,
+                        "text": "apple"
+                    },
+                    {
+                        "_id": 6,
+                        "text": "orange"
+                    }
+                ]
+            },
+            {
+                "_id": 4,
+                "value": "three",
+                "mentions": []
+            }
+        ]
+    },
+    "mutation": {
+        "posts": [
+            {
+                "_id": 3,
+                "mentions": [
+                    {
+                        "_id": 5,
+                        "text": "pear"
+                    }
+                ]
+            }
+        ]
+    }
 }
 ```
 
-### Signup: `/api/users/signup`
-```
-POST api/users/signup
-Host: localhost:3000
-Content-Type: application/json
+## Meta
 
-{
-    "email": "demo@appseed.us",
-    "password": "demo",
-    "name": "George",
-    "surname": "Clooney"
-}
-```
-
-<br />
-
-## Setting up for development
-* clone repo: `git clone https://github.com/app-generator/nodejs-starter.git` 
-* change directory to nodejs-starter: 
-* create a file named .env which should contain the following default setup:
-```
-SALT=35kj7waj3k5kja09jeoi21kn0pg13iuhlkn // used in password hashing
-JWT_SECRET=secret        // used in JWT signing
-SESSION_SECRET=secret    // used for session data
-PORT=3000                // the port on which your server will be available on
-SERVER_ADDRESS=127.0.0.1 // or 0.0.0.0 for all or other interface address you want to listen
-```
-* users are saved in file `config/users.js`
-
-<br />
-
-## Scripts
-**Install Modules**
-```bash
-$ npm i
-$ npm i nodemon -g 
-```
-
-<br />
-
-**Run**
-```bash
-$ npm run start # classic start OR
-$ npm run dev # with nodemon live update  
-```
-Runs the application with [nodemon]("https://nodemon.io/"). Server is listening on Port 3000 by default. This can be overwritten by `PORT` constant in `.env` file. 
-
-<br />
-
-## Support
-
-For issues and features request, use **Github** or access the [support page](https://appseed.us/support) provided by **AppSeed** 
-
-<br />
+Reysmer Valle – [@ReysmerWVR]
 
 ## License
-MIT @ [AppSeed](https://appseed.us)
 
-<br />
+Subdocument Array Mutation is (c) 2020 Reysmer Valle ([@ReysmerWVR]) and may be freely distributed under the [license-url](LICENSE). See the `MIT-LICENSE` file.
 
----
-[Nodejs Starter](https://appseed.us/boilerplate-code/nodejs-starter) provided by **AppSeed**
+### 📝 Todos
+
+- [ ] Add more unit tests
+- [ ] Add integration tests
+- [ ] Add code comments
+- [ ] Improve generateUpdateStatement logic
+- [ ] Fix multiple operations in single statement output
+- [ ] Add Docker and Docker Compose
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does
+its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+
+   [Node]: <https://nodejs.org/en/>
+   [nodejs-starter]: <https://github.com/app-generator/nodejs-starter>
+   [@ReysmerWVR]: <http://twitter.com/ReysmerWVR>
